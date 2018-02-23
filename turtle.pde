@@ -84,7 +84,7 @@ void setup() {
 
   trip = new Trip(250, .1, new Walker() {
     public void step(int max, int counter) {
-      stroke((100+counter)%150, random(100)+10, 055);
+      stroke((100+counter)%150, random(100)+10, 55);
       turtle.walk(max-counter);
       turtle.turn(92);
       turtle.walk(5);
@@ -93,13 +93,13 @@ void setup() {
   }
   );
 
-  trip = new Trip(250, .1, new Walker() {
+  trip = new Trip(275, .25, new Walker() {
     public void step(int max, int counter) {
-      stroke((100+counter)%150, random(100)+10, 055);
+      stroke(random(counter, 40)+50, (100+counter)*2%35, random(30)+25);
       turtle.walk(max-counter);
       turtle.turn(92);
       turtle.walk(5);
-      turtle.turn(TAU);
+      turtle.turn(TAU*2);
     }
   }
   );
@@ -107,9 +107,9 @@ void setup() {
 
 void draw() {
   if (!trip.step()) {
-    System.out.println("Saving...");
-    save("t00004.png");
-    System.out.println("Saved");
+    // System.out.println("Saving...");
+    // save("out/t00005.png");
+    // System.out.println("Saved");
     noLoop();
     return;
   }
