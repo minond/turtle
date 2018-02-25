@@ -70,8 +70,7 @@ void setup() {
       turtle.walk(max-counter);
       turtle.turn(80);
     }
-  }
-  );
+  });
 
   trip = new Trip(250, QUARTER_PI, new Walker() {
     public void step(int max, int counter) {
@@ -79,8 +78,7 @@ void setup() {
       turtle.walk(max-counter);
       turtle.turn(91+TAU);
     }
-  }
-  );
+  });
 
   trip = new Trip(250, .1, new Walker() {
     public void step(int max, int counter) {
@@ -90,8 +88,7 @@ void setup() {
       turtle.walk(5);
       turtle.turn(TAU);
     }
-  }
-  );
+  });
 
   trip = new Trip(275, .25, new Walker() {
     public void step(int max, int counter) {
@@ -101,15 +98,36 @@ void setup() {
       turtle.walk(5);
       turtle.turn(TAU*2);
     }
-  }
-  );
+  });
+
+  trip = new Trip(275, .25, new Walker() {
+    int tickCount = 0;
+
+    public void step(int max, int counter) {
+      stroke(tickCount%255, 15 + random(tickCount)%255, tickCount/2);
+      turtle.turn(91);
+      turtle.walk(++tickCount);
+    }
+  });
+
+  trip = new Trip(275, .25, new Walker() {
+    int tickCount = 0;
+
+    public void step(int max, int counter) {
+      stroke(tickCount%255, 15 + random(tickCount)%255, tickCount/2);
+      turtle.turn(91);
+      turtle.walk(++tickCount);
+      turtle.turn(15);
+      turtle.walk(15);
+    }
+  });
 }
 
 void draw() {
   if (!trip.step()) {
-    // System.out.println("Saving...");
-    // save("out/t00005.png");
-    // System.out.println("Saved");
+    System.out.println("Saving...");
+    save("out/t00006.png");
+    System.out.println("Saved");
     noLoop();
     return;
   }
